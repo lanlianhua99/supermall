@@ -1,28 +1,21 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+    <keep-alive exclude="detail">
+			<router-view></router-view>
+		</keep-alive>
+    <main-tab-bar v-if="!$route.meta.hiddenTabBar"></main-tab-bar>
+	</div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  import MainTabBar from "../src/components/content/MainTabBar.vue"
+	export default {
+		name:'app',
+		components:{
+			MainTabBar
+		}
+	}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less" scoped>
+	@import url('assets/css/base.css');
+	
 </style>
